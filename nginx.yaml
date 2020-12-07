@@ -22,14 +22,11 @@ spec:
          - "testserver"
       containers:
       - name: node1
-        image: ilayarajanabi/nginx:latest
+        image: ilayarajanabi/nginx
         command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
         ports:
         - containerPort: 80
         imagePullPolicy: Always
-      imagePullSecrets:
-      - name: secret
-
 ---
 apiVersion: v1
 kind: Service

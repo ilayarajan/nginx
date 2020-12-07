@@ -28,7 +28,7 @@ spec:
         - containerPort: 80
         imagePullPolicy: Always
       imagePullSecrets:
-      - name: $KUBER_CONFIG
+      - name: secret
 
 ---
 apiVersion: v1

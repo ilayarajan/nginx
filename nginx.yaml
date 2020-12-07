@@ -38,7 +38,7 @@ metadata:
   labels:
     app: node1
 spec:
-  type: NodePort
+  type: LoadBalancer
   sessionAffinity: None
   selector:
      app: node1
@@ -47,4 +47,4 @@ spec:
     protocol: TCP
     port: 8080
     targetPort: 8080
-    nodePort: 30100
+#    nodePort: 30100

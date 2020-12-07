@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: centos-8
+  name: nginx
   labels:
     app: node1
 
@@ -17,19 +17,16 @@ spec:
 
     spec:
       hostAliases:
-      - ip: "172.20.160.28"
+      - ip: "1.1.1.1"
         hostnames:
-         - "banqiodb"
-      - ip: "172.20.160.31"
-        hostnames:
-         - "t24web"
-      - ip: "172.20.113.35"
-        hostnames:
-         - "efsprint.akb.qa"
+         - "testserver name"
       containers:
       - name: node1
         image: ilayarajanabi/nginx:latest
         command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
       imagePullSecrets:
       - name: $KUBER_CONFIG
 

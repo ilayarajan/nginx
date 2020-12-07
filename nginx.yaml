@@ -19,7 +19,7 @@ spec:
       hostAliases:
       - ip: "1.1.1.1"
         hostnames:
-         - "testserver name"
+         - "testserver"
       containers:
       - name: node1
         image: ilayarajanabi/nginx:latest

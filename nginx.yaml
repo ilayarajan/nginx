@@ -23,10 +23,8 @@ spec:
       containers:
       - name: node1
         image: ilayarajanabi/nginx
-        command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
         ports:
         - containerPort: 80
-        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service

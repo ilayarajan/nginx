@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ""
   }
 
-  agent any { label 'kubepod' }
+  agent any
 
   stages {
 

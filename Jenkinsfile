@@ -1,12 +1,35 @@
 pipeline {
 
-  agent { label 'kubepod' }
+  environment {
+    registry = "172.21.224.24:5000/nginx"
+    dockerImage = ""
+  }
+
+  agent any { label 'kubepod' }
 
   stages {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/ilayarajan/nginx.git', branch:'master'
+        git 'https://github.com/ilayarajan/nginx.git'
+      }
+    }
+
+    stage('Build image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+
+    stage('Push Image') {
+      steps{
+        script {
+          docker.withRegistry( "" ) {
+            dockerImage.push()
+          }
+        }
       }
     }
 

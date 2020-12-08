@@ -22,7 +22,8 @@ spec:
          - "testserver"
       containers:
       - name: node1
-        image: ilayarajanabi/nginx
+        image: ilayarajanabi/nginx:1
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
@@ -33,7 +34,7 @@ metadata:
   labels:
     app: node1
 spec:
-  type: LoadBalancer
+  type: NodePort
   sessionAffinity: None
   selector:
      app: node1
@@ -42,4 +43,4 @@ spec:
     protocol: TCP
     port: 80
     targetPort: 80
-#    nodePort: 30100
+    nodePort: 30100

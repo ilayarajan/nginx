@@ -13,6 +13,15 @@ metadata:
     app: node1
 
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disktype
+            operator: In
+            values:
+            - ssd 
   replicas: 1
   selector:
     matchLabels:

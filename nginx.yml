@@ -13,15 +13,6 @@ metadata:
     app: node1
 
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: disktype
-            operator: In
-            values:
-            - ssd 
   replicas: 1
   selector:
     matchLabels:
@@ -38,6 +29,8 @@ spec:
         ports:
         - containerPort: 80
         imagePullPolicy: Always
+      nodeSelector:
+        disktype: ssd
 ---
 apiVersion: v1
 kind: Service

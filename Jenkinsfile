@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/ilayarajan/nginx.git'
+        git 'https://ilayarajan@bitbucket.org/ilayarajan/nginx.git'
       }
     }
 

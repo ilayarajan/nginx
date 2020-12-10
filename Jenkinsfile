@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
        when {
-	expression { env.BRANCH_NAME == 'ilay-build' }
+	expression { env.BRANCH_NAME == 'master' }
 	}
       steps {
         git 'https://ilayarajan@bitbucket.org/ilayarajan/nginx.git'

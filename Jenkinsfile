@@ -6,12 +6,6 @@ pipeline {
   }
 
   agent any
-  parameters {
-    gitParameter name: 'BRANCH_TAG', 
-                 type: 'PT_BRANCH_TAG',
-                defaultValue: 'master'
-    }
-
   stages {
 
     stage('Checkout Source') {

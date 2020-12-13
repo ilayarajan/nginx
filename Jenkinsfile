@@ -8,12 +8,13 @@ pipeline {
   agent any
   stages {
 
-    stage('Checkout Source') {
-       when {
-        branch 'master'
-        }
+    stage('Code Checkout') {
       steps {
-        git 'https://github.com/ilayarajan/nginx.git'
+          checkout([
+            $class: 'GitSCM',
+            branches: [[name: '*/master']],
+            userRemoteConfigs: [[url: 'https://github.com/ilayarajan/nginx.git']]
+            ])
       }
     }
 

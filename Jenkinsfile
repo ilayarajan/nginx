@@ -10,7 +10,7 @@ pipeline {
 
     stage('Checkout Source') {
        when {
-        expression { env.BRANCH_NAME == 'master' }
+        branch 'master'
         }
       steps {
         git 'https://github.com/ilayarajan/nginx.git'

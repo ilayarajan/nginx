@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: node1
-        image: 172.21.224.24:5000/nginx:3
+        image: 172.21.224.24:5000/nginx:4
         ports:
         - containerPort: 80
         imagePullPolicy: Always

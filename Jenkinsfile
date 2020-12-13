@@ -13,7 +13,7 @@ pipeline {
         expression { env.BRANCH_NAME == 'master' }
         }
       steps {
-        git 'https://ilayarajan@bitbucket.org/ilayarajan/nginx.git'
+        git 'https://github.com/ilayarajan/nginx.git'
       }
     }
 

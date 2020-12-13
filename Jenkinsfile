@@ -15,15 +15,11 @@ pipeline {
   stages {
 
     stage('Checkout Source') {
+       when {
+        expression { env.BRANCH_NAME == 'master' }
+        }
       steps {
-        checkout([$class: 'GitSCM',
-                          branches: [[name: "${params.BRANCH_TAG}"]], 
-                          doGenerateSubmoduleConfigurations: false, 
-                          extensions: [], 
-                          gitTool: 'Default', 
-                          submoduleCfg: [], 
-                          userRemoteConfigs: [[url: 'https://ilayarajan@bitbucket.org/ilayarajan/nginx.git']]
-                          ])
+        git 'https://ilayarajan@bitbucket.org/ilayarajan/nginx.git'
       }
     }
 

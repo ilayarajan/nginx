@@ -29,7 +29,9 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( "" ) {
+          sh 'rm  ~/.dockercfg || true'
+          sh 'rm ~/.docker/config.json || true'
+          docker.withRegistry( "http://172.21.224.24:5000/nginx" ) {
             dockerImage.push()
           }
         }

@@ -29,8 +29,6 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          sh 'rm  ~/.dockercfg || true'
-          sh 'rm ~/.docker/config.json || true'
           docker.withRegistry( "" ) {
             dockerImage.push()
           }

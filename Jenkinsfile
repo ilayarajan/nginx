@@ -31,7 +31,7 @@ pipeline {
         script {
           sh 'rm  ~/.dockercfg || true'
           sh 'rm ~/.docker/config.json || true'
-          docker.withRegistry( "http://172.21.224.24:5000/nginx" ) {
+          docker.withRegistry( "" ) {
             dockerImage.push()
           }
         }

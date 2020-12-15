@@ -29,7 +29,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( '172.21.224.24:5000', 'credentials-id: "YWRtaW46cGFzc3dvcmQ=" ) {
+          docker.withRegistry(['url: 172.21.224.24:5000/nginx', 'credentials-id: "YWRtaW46cGFzc3dvcmQ=" ]) {
             dockerImage.push()
           }
         }

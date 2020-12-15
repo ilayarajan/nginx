@@ -2,7 +2,6 @@ pipeline {
 
   environment {
    registry = "172.21.224.24:5000/nginx"
-   registryCredentialsId 'YWRtaW46cGFzc3dvcmQ='
     dockerImage = ""
   }
 

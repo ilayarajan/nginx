@@ -1,7 +1,8 @@
 pipeline {
 
   environment {
-    registry = "172.21.224.24:5000/nginx"
+   registry = "172.21.224.24:5000/nginx"
+   registryCredentialsId 'YWRtaW46cGFzc3dvcmQ='
     dockerImage = ""
   }
 
@@ -29,7 +30,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry(['url: 172.21.224.24:5000/nginx', 'credentials-id: "YWRtaW46cGFzc3dvcmQ=" ]) {
+          docker.withRegistry( "" ) {
             dockerImage.push()
           }
         }

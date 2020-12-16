@@ -26,11 +26,12 @@ spec:
       imagePullSecrets:
       - name: dockercredentials
       containers:
-      - name: node1
-        image: 172.21.224.24:5000/nginx:1
+      - image: 172.21.224.24:5000/nginx:1
+        imagePullPolicy: Always
+        name: node1
+        imagePullPolicy: Always 
         ports:
         - containerPort: 80
-        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service

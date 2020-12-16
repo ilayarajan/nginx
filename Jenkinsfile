@@ -2,7 +2,7 @@ pipeline {
 
   environment {
    registry = "172.21.224.24:5000/nginx"
-   registryCredentials = 'docker-creds'
+   registryCredential = "docker-creds"
    dockerImage = ""
   }
 
@@ -36,7 +36,11 @@ pipeline {
         }
       }
     }
-
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+        }
+     }
     stage('Deploy App') {
       steps {
         script {

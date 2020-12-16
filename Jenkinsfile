@@ -30,17 +30,12 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( "172.21.224.24:5000/nginx", registryCredential ) {
+          docker.withRegistry( "", registryCredential ) {
             dockerImage.push()
           }
         }
       }
     }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-        }
-     }
     stage('Deploy App') {
       steps {
         script {

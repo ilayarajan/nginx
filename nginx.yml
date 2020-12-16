@@ -23,16 +23,14 @@ spec:
         app: node1
 
     spec:
+      imagePullSecrets:
+      - name: dockercredentials
       containers:
       - name: node1
         image: 172.21.224.24:5000/nginx:1
         ports:
         - containerPort: 80
         imagePullPolicy: Always
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      imagePullSecrets:
-      - name: dockercredentials 
 ---
 apiVersion: v1
 kind: Service

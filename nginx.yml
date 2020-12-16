@@ -29,8 +29,10 @@ spec:
         ports:
         - containerPort: 80
         imagePullPolicy: Always
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
       imagePullSecrets:
-      - name : dockercredentials 
+      - name: dockercredentials 
 ---
 apiVersion: v1
 kind: Service

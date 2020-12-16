@@ -2,6 +2,7 @@ pipeline {
 
   environment {
    registry = "172.21.224.24:5000/nginx"
+   registryUrl = "172.21.224.24:5000"
    registryCredential = "docker-creds"
    dockerImage = ""
   }
@@ -30,7 +31,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry( '', registryCredential, registryUrl ) {
             dockerImage.push()
           }
         }

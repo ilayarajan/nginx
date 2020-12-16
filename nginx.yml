@@ -28,7 +28,7 @@ spec:
         image: 172.21.224.24:5000/nginx:1
         ports:
         - containerPort: 80
-        imagePullPolicy: Always
+        imagePullPolicy: Never
       imagePullSecrets:
       - name : dockercredentials 
 ---

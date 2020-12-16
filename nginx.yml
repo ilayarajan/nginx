@@ -29,7 +29,7 @@ spec:
         ports:
         - containerPort: 80
         imagePullPolicy: Always
-      pullImagesSecrets
+      imagePullSecrets
       - name dockercredentials 
 ---
 apiVersion: v1

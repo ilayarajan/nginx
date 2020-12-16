@@ -2,7 +2,8 @@ pipeline {
 
   environment {
    registry = "172.21.224.24:5000/nginx"
-    dockerImage = ""
+   registryCredentials = 'docker-creds'
+   dockerImage = ""
   }
 
   agent any

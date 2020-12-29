@@ -11,19 +11,7 @@ node{
 
   
   //Checkout Code from Git
-//    checkout scm
-agent any
-  stages {
-
-    stage('Code Checkout') {
-      steps {
-          checkout([
-            $class: 'GitSCM',
-            branches: [[name: '*/master']],
-            userRemoteConfigs: [[url: 'https://github.com/ilayarajan/nginx.git']]
-            ])
-      }
-    }
+    checkout scm
   
   //Stage 1 : Build the docker image.
   stage('Build image') {
@@ -43,7 +31,7 @@ agent any
                    // Create namespace if it doesn't exist
                    sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
            //Update the imagetag to the latest version
-                   sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/production/*.yaml")
+           //        sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/production/*.yaml")
            //Create or update resources
                    sh("kubectl --namespace=${namespace} apply -f nginx.yaml")
             //       sh("kubectl --namespace=${namespace} apply -f k8s/production/service.yaml")
@@ -53,7 +41,7 @@ agent any
        
               default:
                    sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
-                   sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/production/*.yaml")
+             //      sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/production/*.yaml")
                    sh("kubectl --namespace=${namespace} apply -f nginx.yaml")
                //    sh("kubectl --namespace=${namespace} apply -f k8s/development/service.yaml")
                    sh("echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")

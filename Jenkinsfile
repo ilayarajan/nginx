@@ -33,7 +33,7 @@ node{
            //Update the imagetag to the latest version
            //        sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/production/*.yaml")
            //Create or update resources
-                   sh("kubectl --namespace=${namespace} apply -f /apps/git/nginx.yaml")
+                   sh("kubectl --namespace=${namespace} apply -f /var/lib/jenkins/workspace/nginx_master/nginx.yaml")
             //       sh("kubectl --namespace=${namespace} apply -f k8s/production/service.yaml")
            //Grab the external Ip address of the service
                    sh("echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")
@@ -42,7 +42,7 @@ node{
               default:
                    sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
              //      sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/production/*.yaml")
-                   sh("kubectl --namespace=${namespace} apply -f /apps/git/nginx.yaml")
+                   sh("kubectl --namespace=${namespace} apply -f /var/lib/jenkins/workspace/nginx_master/nginx.yaml")
                //    sh("kubectl --namespace=${namespace} apply -f k8s/development/service.yaml")
                    sh("echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")
                    break

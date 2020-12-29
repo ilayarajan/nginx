@@ -15,4 +15,8 @@ node{
   stage('Build image') {
       sh("docker build -t ${imageTag} .")
   }
+  //Stage 2 : Push the image to docker registry
+  stage('Push image to registry') {
+      sh("docker push ${imageTag}")
+  }
 }

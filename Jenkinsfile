@@ -1,9 +1,9 @@
 node{
   //Define all variables
   def project = 'nginx-deployment'
-  def appName = 'nginx'
+  def appName = 'nginx-app'
   def serviceName = "${appName}-backend"  
-  def imageVersion = ''
+  def imageVersion = 'nginx'
   def namespace = 'nginx'
   def imageTag = "172.21.224.24:5000/${project}/${appName}:${imageVersion}.${env.BUILD_NUMBER}"
   registryCredential = 'docker-creds'
@@ -31,7 +31,7 @@ node{
                    // Create namespace if it doesn't exist
                    sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
            //Update the imagetag to the latest version
-                   sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' *.yaml")
+                   sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./apps/git/nginx/*.yaml")
            //Create or update resources
                    sh("kubectl --namespace=${namespace} apply -f nginx.yaml")
             //       sh("kubectl --namespace=${namespace} apply -f k8s/production/service.yaml")
@@ -41,7 +41,7 @@ node{
        
               default:
                    sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
-                   sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' *.yaml")
+                   sh("sed -i.bak 's#image/${project}/${appName}:${imageVersion}#${imageTag}#' ./apps/git/nginx/*.yaml")
                    sh("kubectl --namespace=${namespace} apply -f nginx.yaml")
                //    sh("kubectl --namespace=${namespace} apply -f k8s/development/service.yaml")
                    sh("echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")

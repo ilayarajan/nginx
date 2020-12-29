@@ -7,7 +7,7 @@ node{
   def namespace = 'nginx'
   def imageTag = "172.21.224.24:5000/${project}/${appName}:${imageVersion}.${env.BUILD_NUMBER}"
   registryCredential = 'docker-creds'
-  image="172.21.224.24:5000"
+  image = "172.21.224.24:5000"
 
   
   //Checkout Code from Git

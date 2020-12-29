@@ -40,8 +40,8 @@ node{
        
               default:
                    sh("kubectl get ns ${namespace} || kubectl create ns ${namespace}")
-                   sh("sed -i.bak 's#gcr.io/${project}/${appName}:${imageVersion}#${imageTag}#' ./k8s/development/*.yaml")
-                   sh("kubectl --namespace=${namespace} apply -f k8s/development/deployment.yaml")
+                   sh("sed -i.bak 's#gcr.io/${project}/${appName}:${imageVersion}#${imageTag}#' ./*.yaml")
+                   sh("kubectl --namespace=${namespace} apply -f nginx.yaml")
                //    sh("kubectl --namespace=${namespace} apply -f k8s/development/service.yaml")
                    sh("echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")
                    break

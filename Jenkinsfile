@@ -6,6 +6,7 @@ node{
   def imageVersion = 'nginx'
   def namespace = 'nginx'
   def imageTag = "172.21.224.24:5000/${project}/${appName}:${imageVersion}.${env.BUILD_NUMBER}"
+  registryCredential = 'docker-creds'
 
   
   //Checkout Code from Git
@@ -17,6 +18,8 @@ node{
   }
   //Stage 2 : Push the image to docker registry
   stage('Push image to registry') {
+      docker.withRegistry( 'http://172.21.224.24:5000/v2', registryCredential ) {
       sh("docker push ${imageTag}")
   }
+}
 }

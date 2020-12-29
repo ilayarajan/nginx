@@ -1,9 +1,9 @@
 node{
   //Define all variables
   def project = 'nginx-deployment'
-  def appName = 'nginx-app'
+  def appName = 'nginx'
   def serviceName = "${appName}-backend"  
-  def imageVersion = 'nginx'
+  def imageVersion = ''
   def namespace = 'nginx'
   def imageTag = "172.21.224.24:5000/${project}/${appName}:${imageVersion}.${env.BUILD_NUMBER}"
   registryCredential = 'docker-creds'

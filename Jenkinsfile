@@ -11,24 +11,18 @@ node{
 
   
   //Checkout Code from Git
-stages {
-        stage ('Checkout') {
-            steps {
-                script {
-                    COMMIT = "${GIT_COMMIT.substring(0,8)}"
+//    checkout scm
+  stages {
 
-                    if ("${BRANCH_NAME}" == "master"){
-                        TAG = "latest"
-                        NGINX = "nginx"
-                    }
-                    else {
-                        TAG = "${BRANCH_NAME}"
-                        NGINX = "${BRANCH_NAME}-nginx"
-                    }
-                }
-                sh 'printenv'
-            }
-        }
+    stage('Code Checkout') {
+      steps {
+          checkout([
+            $class: 'GitSCM',
+            branches: [[name: '*/master']],
+            userRemoteConfigs: [[url: 'https://github.com/ilayarajan/nginx.git']]
+            ])
+      }
+    }
   
   //Stage 1 : Build the docker image.
   stage('Build image') {

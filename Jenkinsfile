@@ -12,6 +12,7 @@ node{
   
   //Checkout Code from Git
 //    checkout scm
+agent any
   stages {
 
     stage('Code Checkout') {

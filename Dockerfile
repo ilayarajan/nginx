@@ -7,4 +7,4 @@ CMD mkdir /usr/local/tomcat/webapp
 
 COPY ./webapp.war /usr/local/tomcat/webapp
 
-COPY ./webapps /usr/local/tomcat/webapps/webapp
+COPY ./webapp /usr/local/tomcat/webapps/webapp

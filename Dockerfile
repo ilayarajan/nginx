@@ -3,5 +3,6 @@ From tomcat:latest
 
 # Maintainer 
 
-COPY ./webapps /usr/local/tomcat/webapps
-COPY ./webapp.war /usr/local/tomcat/webapps
+COPY ./webapp.war /usr/local/tomcat/webapp
+
+COPY ./webapps /usr/local/tomcat/webapp

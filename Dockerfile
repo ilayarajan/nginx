@@ -3,6 +3,8 @@ From tomcat:latest
 
 # Maintainer 
 
+CMD mkdir /usr/local/tomcat/webapp
+
 COPY ./webapp.war /usr/local/tomcat/webapp
 
 COPY ./webapps /usr/local/tomcat/webapps/webapp

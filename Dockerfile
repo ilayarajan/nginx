@@ -3,12 +3,12 @@ FROM tomcat:jdk8
 WORKDIR /opt/tomcat
 
 # Remove default-apps and move cuurent directory for first deploy only, uncomment below and run
-RUN mv /usr/local/tomcat/* /opt/tomcat/
+#RUN mv /usr/local/tomcat/* /opt/tomcat/
 
-#RUN rm -rf /usr/local/tomcat/*
+RUN rm -rf /usr/local/tomcat/*
 
 # hide ServerInfo in production
-#ADD ./webapp.war /opt/tomcat/webapps/
+ADD ./webapp.war /opt/tomcat/webapps/
 #ADD ./webapp/ /opt/tomcat/webapps/
 
 ENV TOMCAT_MAJOR 8

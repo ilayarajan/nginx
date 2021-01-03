@@ -9,7 +9,7 @@ RUN rm -rf /usr/local/tomcat/*
 
 # hide ServerInfo in production
 ADD ./webapp.war /opt/tomcat/webapps/
-#ADD ./webapp/ /opt/tomcat/webapps/
+ADD ./webapp/ /opt/tomcat/webapps/
 
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.5.41
